@@ -1,31 +1,12 @@
 import os
 
 import pinecone
-from langchain.document_loaders import ReadTheDocsLoader, UnstructuredMarkdownLoader
-from langchain.text_splitter import (
-    CharacterTextSplitter,
-    RecursiveCharacterTextSplitter,
-)
+from langchain.document_loaders import UnstructuredMarkdownLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma, Pinecone
 from dotenv import dotenv_values
-
-
-def getKey(key: str, path=""):
-    """Gets key from .env file"""
-    paths = [
-        "./.env",
-        "/Users/samisaf/openai.env",
-        "C:/Users/samis/openai.env",
-        "C:/Users/samisaf/openai.env",
-    ]
-    if len(path) > 0:
-        return dotenv_values(path)[key]
-    else:
-        for p in paths:
-            if len(dotenv_values(p)) > 0:
-                return dotenv_values(p)[key]
-    return None
+from helper import get_key
 
 
 def load_and_split(directory: str, chunk_size=400, chunk_overlap=50):
@@ -54,14 +35,14 @@ def load_and_split(directory: str, chunk_size=400, chunk_overlap=50):
 
 def embed_into_vectorstore(docs: list, dbpath: str, store="Chroma"):
     """Embeds a list of documents into a vector store or a database"""
-    embedding = OpenAIEmbeddings(openai_api_key=getKey("OPENAI_API_KEY"))
+    embedding = OpenAIEmbeddings(openai_api_key=get_key("OPENAI_API_KEY"))
     if store == "Chroma":
         db = Chroma.from_documents(docs, embedding, persist_directory=dbpath)
         db.persist()
     elif store == "Pinecone":
-        index_name = getKey("PINCONE_INDEX_NAME")
-        api_key = getKey("PINECONE_API_KEY")
-        environment = getKey("PINECONE_ENV")
+        index_name = get_key("PINCONE_INDEX_NAME")
+        api_key = get_key("PINECONE_API_KEY")
+        environment = get_key("PINECONE_ENV")
         pinecone.init(api_key=api_key, environment=environment)
         db = Pinecone.from_documents(docs, embedding, index_name=index_name)
     else:
