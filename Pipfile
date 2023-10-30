@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pinecone-client = "*"
+openai = "*"
+langchain = "*"
+black = "*"
+beautifulsoup4 = "*"
+unstructured = "*"
+tiktoken = "*"
+markdown = "*"
+python-dotenv = "*"
+install = "*"
+chromadb = "*"
+chroma = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+python_full_version = "3.9.6"
