@@ -1,4 +1,4 @@
 import subprocess
 
 if __name__ == "__main__":
-    subprocess.run(["streamlit", "run", "streamlit_start.py"])
+    subprocess.run(["streamlit", "run", "streamlit_app.py"])

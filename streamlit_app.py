@@ -1,11 +1,18 @@
 from backend.core import run_llm
 import streamlit as st
 from streamlit_chat import message
-import subprocess
 
+description = """
+This programs allows the user to ask questions regarding the Kidney Precision Medicine Project (KPMP) using a natural language interface. 
 
+It uses a large language model (ChatGPT) supplemented by the study protocol via a retrieval-augmented generation (RAG) method to generate the answers.
+
+At this point, the October 2023 versions of the clinical protocol, and recruitment site MOP are available to search. 
+
+&#169; 2023 Sami Safadi, MD. Email me at samisaf@gmail.com for questions.
+"""
 st.header("KPMP Documentation Helper")
-st.subheader("2023 Sami Safadi, MD")
+st.markdown(description)
 prompt = st.text_input("Enter your query below", "")
 
 if "user_prompt_history" not in st.session_state:
