@@ -23,8 +23,12 @@ max_tokens = 4000
 def run_llm(query: str):
     embedding = OpenAIEmbeddings(openai_api_key=openai_api_key)
     docsearch = Pinecone.from_existing_index(index_name=index_name, embedding=embedding)
-    llm = ChatOpenAI(openai_api_key=openai_api_key, model=model, temperature=temperature)
-    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=docsearch.as_retriever())
+    llm = ChatOpenAI(
+        openai_api_key=openai_api_key, model=model, temperature=temperature
+    )
+    qa = RetrievalQA.from_chain_type(
+        llm=llm, chain_type="stuff", retriever=docsearch.as_retriever()
+    )
     return qa.run(query)
 
 
