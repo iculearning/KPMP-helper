@@ -19,6 +19,7 @@ chroma = "*"
 streamlit = "*"
 streamlit-chat = "*"
 watchdog = "*"
+pypdf = "*"
 
 [dev-packages]
 
