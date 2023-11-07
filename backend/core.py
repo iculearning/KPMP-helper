@@ -3,8 +3,8 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import Pinecone
-from langchain.tools import Tool
-from pydantic import BaseModel, Field
+from langchain.tools import StructuredTool
+from pydantic.v1 import BaseModel, Field
 import pinecone
 from backend.triage import triage_biopsy
 from backend.helper import get_key
@@ -38,7 +38,7 @@ class TriageInput(BaseModel):
 
 
 tools = [
-    Tool.from_function(
+    StructuredTool(
         name="triage_biopsy",
         func=triage_biopsy,
         description="""Use this tool to triage a kidney biopsy. 

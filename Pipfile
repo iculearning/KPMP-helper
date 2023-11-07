@@ -11,10 +11,8 @@ beautifulsoup4 = "*"
 markdown = "*"
 python-dotenv = "*"
 pypdf = "*"
-jupyter = "*"
 streamlit = "*"
 streamlit-chat = "*"
-black = "*"
 #chromadb = "*"
 #chroma = "*"
 #unstructured = "*"
@@ -23,6 +21,8 @@ black = "*"
 #watchdog = "*"
 
 [dev-packages]
+jupyter = "*"
+black = "*"
 
 [requires]
-python_version = "3.11.6"
+python_version = "3.9.9"
