@@ -4,9 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-aiohttp = "==3.9.0b0"
-openai = "0.28"
-langchain = "*"
+openai = "0.28.1"
+langchain = "0.0.330"
 pinecone-client = "*"
 beautifulsoup4 = "*"
 markdown = "*"
@@ -26,4 +25,4 @@ black = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.12"
+python_version = "3.11.6"
