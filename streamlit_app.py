@@ -1,4 +1,4 @@
-from backend.core import run_llm
+import backend.core
 import streamlit as st
 from streamlit_chat import message
 
@@ -21,7 +21,7 @@ if "chat_answers_history" not in st.session_state:
 
 if prompt:
     with st.spinner("generating response..."):
-        answer = run_llm(prompt)
+        answer = backend.core.run_llm(prompt)
         st.session_state["user_prompt_history"].append(prompt)
         st.session_state["chat_answers_history"].append(answer)
 

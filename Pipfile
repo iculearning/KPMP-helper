@@ -4,27 +4,25 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-aiohttp = "3.9.0b0"
-openai = "*"
-langchain = "*"
+openai = "0.28.1"
+langchain = "0.0.330"
 pinecone-client = "*"
 beautifulsoup4 = "*"
-pypdf = "*"
-tiktoken = "*"
 markdown = "*"
 python-dotenv = "*"
+pypdf = "*"
 streamlit = "*"
 streamlit-chat = "*"
 #chromadb = "*"
 #chroma = "*"
+#unstructured = "*"
+#tiktoken = "*"
 #install = "*"
 #watchdog = "*"
-#unstructured = "*"
 
 [dev-packages]
-black = "*"
 jupyter = "*"
+black = "*"
 
 [requires]
-python_version = "3.12"
-python_full_version = "3.12.0"
+python_version = "3.9.9"
