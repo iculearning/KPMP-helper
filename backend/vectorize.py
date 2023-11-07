@@ -20,7 +20,9 @@ def load_and_split_md(
     files = [f for f in files if ".md" in f]
     print(f"Located {files} in {directory}")
     # initialize text splitter
-    text_splitter = splitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap, separators=["\n\n", "\n"])
+    text_splitter = splitter(
+        chunk_size=chunk_size, chunk_overlap=chunk_overlap, separators=["\n\n", "\n"]
+    )
     # read the files into documents
     raw_documents = []
     for f in files:
@@ -28,11 +30,18 @@ def load_and_split_md(
         raw_documents += doc
     # split raw documents
     split_docs = text_splitter.split_documents(raw_documents)
-    print(f"Read {len(raw_documents)} documents and splitted them into {len(split_docs)} documents")
+    print(
+        f"Read {len(raw_documents)} documents and splitted them into {len(split_docs)} documents"
+    )
     return split_docs
 
 
-def load_and_split_pdf(directory: str, splitter=RecursiveCharacterTextSplitter, chunk_size=400, chunk_overlap=50):
+def load_and_split_pdf(
+    directory: str,
+    splitter=RecursiveCharacterTextSplitter,
+    chunk_size=400,
+    chunk_overlap=50,
+):
     """Loads PDF files in a directory, then splits them using tiktoken encoder. Returns split documents."""
     # obtain files in the directory
     files = os.listdir(path=directory)
@@ -46,7 +55,9 @@ def load_and_split_pdf(directory: str, splitter=RecursiveCharacterTextSplitter, 
     raw_documents = PyPDFDirectoryLoader(path=directory).load()
     # split raw documents
     split_docs = text_splitter.split_documents(raw_documents)
-    print(f"Read {len(raw_documents)} documents and splitted them into {len(split_docs)} chunks")
+    print(
+        f"Read {len(raw_documents)} documents and splitted them into {len(split_docs)} chunks"
+    )
     return split_docs
 
 
